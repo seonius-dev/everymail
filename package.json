@@ -1,0 +1,28 @@
+{
+  "name": "self-mail",
+  "version": "1.0.0",
+  "description": "Catch-all Maildir inbox web panel",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "maildir",
+    "postfix",
+    "catch-all",
+    "inbox"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "fs-extra": "^11.3.0",
+    "helmet": "^8.1.0",
+    "mailparser": "^3.7.5",
+    "sanitize-html": "^2.17.0"
+  }
+}
