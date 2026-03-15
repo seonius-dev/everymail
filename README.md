@@ -21,7 +21,17 @@ Catch-all email sistemi + web panel.
 Sonra VPS'e SSH ile bağlanıp tek komut çalıştırın:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/<GITHUB_KULLANICI>/<REPO_ADI>/main/scripts/quickstart.sh | sudo bash -s -- https://github.com/<GITHUB_KULLANICI>/<REPO_ADI>.git main
+curl -fsSL https://raw.githubusercontent.com/seonius-dev/everymail/main/scripts/quickstart.sh | sudo bash -s -- https://github.com/seonius-dev/everymail.git main
+```
+
+Bu komut kurulum sırasında sizden `domain`, `panel domain` ve gerekirse `MX` bilgilerini ister.
+
+Tam otomatik (non-interactive) kurulum isterseniz:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/seonius-dev/everymail/main/scripts/quickstart.sh | \
+ROOT_DOMAIN=domain.com PANEL_DOMAIN=mail.domain.com MX_TARGET=mail.domain.com LE_EMAIL=admin@domain.com NON_INTERACTIVE=true \
+sudo -E bash -s -- https://github.com/seonius-dev/everymail.git main --non-interactive
 ```
 
 Script otomatik olarak:
@@ -33,6 +43,8 @@ Script otomatik olarak:
 5. Nginx reverse proxy ayarlar
 6. Let's Encrypt SSL alır
 7. Firewall kurallarını açar
+
+Kurulum akışı DNS doğrulaması geçmeden bir sonraki adıma geçmez.
 
 Kurulum bittiğinde panel adresinizi verir: `https://mail.domain.com`
 

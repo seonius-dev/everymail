@@ -27,6 +27,16 @@ chmod +x scripts/install-vps.sh
 chmod +x scripts/quickstart.sh
 
 echo "[3/4] Ana kurulum başlatılıyor..."
-bash scripts/install-vps.sh
+shift 2 || true
+
+if [[ -t 0 ]]; then
+  bash scripts/install-vps.sh "$@"
+elif [[ -r /dev/tty ]]; then
+  # curl | bash kullanımında stdin pipe olur; interaktif sorular için terminale bağlan.
+  bash scripts/install-vps.sh "$@" </dev/tty
+else
+  # TTY yoksa install-vps.sh gerekli değerleri env veya argümanlardan okur.
+  bash scripts/install-vps.sh "$@"
+fi
 
 echo "[4/4] Tamamlandı."
